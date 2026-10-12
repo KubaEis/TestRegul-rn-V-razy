@@ -1,0 +1,3 @@
+Gimli;Trpaslík;14.3.1960;Sekera;90
+Arwen;Elf;25.12.2007;Hůl;75
+Bilbo;Hobit;29.2.2012;Dýka;45
