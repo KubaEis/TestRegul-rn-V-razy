@@ -7,6 +7,7 @@ public class ZadostOPrukaz {
     private String typZbrane;
     private int levelZkusenosti;
 
+    // konstruktor zadosti
     public ZadostOPrukaz(String jmeno, String rasa, LocalDate datumNarozeni, String typZbrane, int levelZkusenosti) {
         this.jmeno = jmeno;
         this.rasa = rasa;

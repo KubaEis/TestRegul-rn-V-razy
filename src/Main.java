@@ -1,12 +1,14 @@
 void main() throws IOException {
     ValidatorZadosti val =  new ValidatorZadosti();
     List<ZadostOPrukaz> obj = new ArrayList<>();
+    // nacteni souboru
     Path objednavky = Path.of("data", "data.txt");
-
+    // osetreni existence souboru
     if (!Files.exists(objednavky.getParent())) {
         Files.createDirectories(objednavky.getParent());
     }
 
+    //validave a ulozeni validnich udaju, vypis chyb v udajich
     try {
         try (BufferedReader zadostiReader = Files.newBufferedReader(objednavky))
         {
@@ -29,17 +31,20 @@ void main() throws IOException {
     }
 
     System.out.println("\nSeznam všech postav mladších než 18 let.");
+    // nalezeni postav mladsich jak 18 let
     for (int i=0; i<obj.size(); i++) {
         if ((2026 - obj.get(i).getDatumNarozeni().getYear()) < 18 ){
             System.out.println("    "+obj.get(i).toString());
         }
     }
+
     System.out.println("\nPočet validních žádostí podle rasy.");
     int pocetElfu = 0;
     int pocetTrpasliku = 0;
     int pocetLidi = 0;
     int pocetOrku = 0;
     int pocetHobitu = 0;
+    // pocitani vyskytu ras
     for (int i=0; i<obj.size(); i++) {
         if (obj.get(i).getRasa().equals("Elf")){
             pocetElfu++;
@@ -65,6 +70,7 @@ void main() throws IOException {
 
     System.out.println("\nJméno a zbraň postavy s nejvyšším levelem.");
     ZadostOPrukaz postava = obj.getFirst();
+    // vyhledani postavy s nejvyssim levelem
     for (int i=0; i<obj.size(); i++) {
         if (postava.getLevelZkusenosti() < obj.get(i).getLevelZkusenosti()) {
             postava = obj.get(i);
